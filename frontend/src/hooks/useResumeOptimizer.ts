@@ -100,7 +100,7 @@ export function useResumeOptimizer(): UseResumeOptimizerReturn {
         if (res.success && res.data) {
           setSavedResumes(res.data);
           // Check for default
-          const defaultResume = res.data.find(r => r.is_default);
+          const defaultResume = res.data.find((r: any) => r.is_default);
           if (defaultResume) {
              handleLoadSavedResume(defaultResume.id, true);
           }
