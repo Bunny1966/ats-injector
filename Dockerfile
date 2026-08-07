@@ -32,15 +32,18 @@ COPY shared/ ./shared/
 # Copy backend package files
 COPY backend/package.json backend/package-lock.json* ./backend/
 
-# Install dependencies
+# Install all dependencies (including devDependencies required for tsc build)
 WORKDIR /app/backend
-RUN npm install --omit=dev && npm cache clean --force
+RUN npm install
 
 # Copy backend source
 COPY backend/ ./
 
 # Build TypeScript
 RUN npm run build
+
+# Prune devDependencies to save space
+RUN npm prune --omit=dev && npm cache clean --force
 
 # Create required directories
 RUN mkdir -p uploads generated
