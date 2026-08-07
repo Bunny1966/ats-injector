@@ -7,14 +7,18 @@
 
 FROM node:20-slim
 
-# Install LibreOffice Writer and Microsoft Core Fonts (minimal footprint)
-RUN echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections && \
+# Enable contrib and non-free repositories for MS fonts
+RUN sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list 2>/dev/null || true && \
+    if [ -f /etc/apt/sources.list.d/debian.sources ]; then sed -i 's/Components: main/Components: main contrib non-free/g' /etc/apt/sources.list.d/debian.sources; fi && \
+    echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
       libreoffice-writer \
       libreoffice-java-common \
       fonts-dejavu \
       fonts-liberation \
+      cabextract \
+      fontconfig \
       ttf-mscorefonts-installer && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
