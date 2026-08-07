@@ -5,7 +5,7 @@
 # Optimized for Render free tier (512MB RAM).
 # =============================================================================
 
-FROM node:20-slim
+FROM node:22-slim
 
 # Enable contrib and non-free repositories for MS fonts
 RUN sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list 2>/dev/null || true && \
