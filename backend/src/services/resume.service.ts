@@ -132,7 +132,7 @@ export async function handleUpload(
   logger.info('Resume parsed successfully', {
     sessionId,
     sections: resume.sections.length,
-    sectionTitles: resume.sections.map((s) => s.title),
+    sectionTitles: resume.sections.map((s: { title: string }) => s.title),
   });
 
   return {
@@ -143,7 +143,7 @@ export async function handleUpload(
       fileType,
       pageCount: resume.metadata.pageCount,
       sectionCount: resume.sections.length,
-      sections: resume.sections.map((s) => s.title),
+      sections: resume.sections.map((s: { title: string }) => s.title),
     },
   };
 }
@@ -211,7 +211,7 @@ export async function handleLoadSaved(
       fileType,
       pageCount: resume.metadata.pageCount,
       sectionCount: resume.sections.length,
-      sections: resume.sections.map((s) => s.title),
+      sections: resume.sections.map((s: { title: string }) => s.title),
     },
   };
 }

@@ -26,10 +26,13 @@ RUN sed -i 's/main/main contrib non-free/g' /etc/apt/sources.list 2>/dev/null ||
 # Set working directory
 WORKDIR /app
 
-# Copy shared package first (it's a local dependency)
+# Copy shared package first and build it
 COPY shared/ ./shared/
+WORKDIR /app/shared
+RUN npm install && npm run build
 
 # Copy backend package files
+WORKDIR /app
 COPY backend/package.json backend/package-lock.json* ./backend/
 
 # Install all dependencies (including devDependencies required for tsc build)
