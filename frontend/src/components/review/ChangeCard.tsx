@@ -223,7 +223,7 @@ export default function ChangeCard({
       {change.matchedKeywords && change.matchedKeywords.length > 0 && (
         <div className="flex items-center gap-1.5 mb-3 flex-wrap">
           <Tag className="h-3 w-3 text-[var(--text-muted)]" />
-          {change.matchedKeywords.map((kw) => (
+          {change.matchedKeywords.map((kw: string) => (
             <span
               key={kw}
               className="text-[10px] px-2 py-0.5 rounded-full bg-[var(--accent-primary)]/10 text-[var(--text-accent)]"
