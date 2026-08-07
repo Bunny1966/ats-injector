@@ -138,7 +138,7 @@ export default function ChatContainer({
         {/* Render messages and inject the review panel in chronological order */}
         {messages.map((msg, index) => {
           const isLastAnalysis = msg.type === 'system-analysis' && 
-            messages.slice(index + 1).every(m => m.type !== 'system-analysis');
+            messages.slice(index + 1).every((m: any) => m.type !== 'system-analysis');
 
           return (
             <React.Fragment key={msg.id}>
@@ -193,7 +193,7 @@ export default function ChatContainer({
               <div className="border-t border-[var(--border-subtle)] pt-4">
                 <p className="text-[10px] font-semibold text-[var(--text-muted)] mb-3 text-center uppercase tracking-wider">Or select a saved resume</p>
                 <div className="flex flex-wrap justify-center gap-2">
-                  {savedResumes.map((r) => (
+                  {savedResumes.map((r: any) => (
                     <button
                       key={r.id}
                       onClick={() => onSelectSavedResume(r.id)}

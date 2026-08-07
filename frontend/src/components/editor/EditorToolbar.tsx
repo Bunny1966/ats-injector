@@ -53,7 +53,7 @@ export default function EditorToolbar({ editor, onInsertLink }: EditorToolbarPro
   return (
     <div className="editor-toolbar">
       <div className="editor-toolbar-group">
-        {tools.map((tool) => (
+        {tools.map((tool: any) => (
           <button
             key={tool.label}
             type="button"

@@ -15,7 +15,7 @@ export default function ResumeList({ initialResumes }: { initialResumes: SavedRe
     setLoadingId(id);
     try {
       await setDefaultResume(id, isDefault);
-      setResumes(resumes.map(r => ({ ...r, is_default: r.id === id ? isDefault : (isDefault ? false : r.is_default) })));
+      setResumes(resumes.map((r: any) => ({ ...r, is_default: r.id === id ? isDefault : (isDefault ? false : r.is_default) })));
       router.refresh();
     } catch (error: any) {
       console.error('Failed to set default', error);
@@ -31,7 +31,7 @@ export default function ResumeList({ initialResumes }: { initialResumes: SavedRe
     setLoadingId(id);
     try {
       await deleteSavedResume(id);
-      setResumes(resumes.filter(r => r.id !== id));
+      setResumes(resumes.filter((r: any) => r.id !== id));
       router.refresh();
     } catch (error) {
       console.error('Failed to delete', error);
@@ -45,7 +45,7 @@ export default function ResumeList({ initialResumes }: { initialResumes: SavedRe
 
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {resumes.map((resume) => (
+      {resumes.map((resume: any) => (
         <div
           key={resume.id}
           className={`group relative flex flex-col justify-between glass-card p-6 transition-all ${

@@ -255,7 +255,7 @@ export function useResumeOptimizer(): UseResumeOptimizerReturn {
             
             let content = aiMessage;
             if (editsApplied.length > 0) {
-              content += '\n\n**Actions taken:**\n' + editsApplied.map(e => `• ${e}`).join('\n');
+              content += '\n\n**Actions taken:**\n' + editsApplied.map((e: string) => `• ${e}`).join('\n');
             }
 
             // Build absolute download URLs
@@ -320,7 +320,7 @@ export function useResumeOptimizer(): UseResumeOptimizerReturn {
 
             // Initialize all change decisions to 'pending'
             const initialDecisions = new Map<string, ChangeStatus>();
-            result.changes.forEach((c) => initialDecisions.set(c.id, 'pending'));
+            result.changes.forEach((c: any) => initialDecisions.set(c.id, 'pending'));
             setChangeDecisions(initialDecisions);
 
             // Build a human-readable summary
@@ -350,9 +350,9 @@ export function useResumeOptimizer(): UseResumeOptimizerReturn {
               summaryParts.push(
                 `${changes.length} change(s) recommended:`
               );
-              const additions = changes.filter((c) => c.type === 'addition').length;
-              const modifications = changes.filter((c) => c.type === 'modification').length;
-              const removals = changes.filter((c) => c.type === 'removal').length;
+              const additions = changes.filter((c: any) => c.type === 'addition').length;
+              const modifications = changes.filter((c: any) => c.type === 'modification').length;
+              const removals = changes.filter((c: any) => c.type === 'removal').length;
               if (additions) summaryParts.push(`   • ${additions} addition(s)`);
               if (modifications) summaryParts.push(`   • ${modifications} modification(s)`);
               if (removals) summaryParts.push(`   • ${removals} suggested removal(s)`);

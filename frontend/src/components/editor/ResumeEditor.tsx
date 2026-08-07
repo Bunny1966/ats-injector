@@ -103,7 +103,7 @@ export default function ResumeEditor({ sessionId, documentVersion, onSaved }: Re
     const extractParts = (html: string) => 
       html.split(/<\/p>|<\/li>|<\/h[1-6]>/)
           .map(extractText)
-          .filter(t => t.length > 0);
+          .filter((t: any) => t.length > 0);
 
     const originalParts = extractParts(originalHtml);
     const currentParts = extractParts(currentHtml);
