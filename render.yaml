@@ -1,0 +1,29 @@
+# =============================================================================
+# Render Deployment Configuration
+# =============================================================================
+# Defines the backend service as a Docker-based web service on Render.
+# Deploy by connecting this repo to Render and it will auto-detect this file.
+# =============================================================================
+
+services:
+  - type: web
+    name: resume-optimizer-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: BACKEND_PORT
+        value: "8000"
+      - key: FRONTEND_URL
+        sync: false  # Set this manually in Render dashboard
+      - key: GEMINI_API_KEY
+        sync: false  # Set this manually in Render dashboard
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false

@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Environment Variables
+.env
+.env.*
+
+# Compiled Output
+dist/
+build/
+
+# Application Data (DO NOT COMMIT)
+uploads/
+generated/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Testing
+coverage/
+
+# OS/Editor Files
+.DS_Store
+.vscode/
+.idea/
+AGENTS.md
+CLAUDE.md
