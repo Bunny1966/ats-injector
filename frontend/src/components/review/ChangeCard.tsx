@@ -94,7 +94,7 @@ export default function ChangeCard({
     },
   };
 
-  const config = typeConfig[change.type];
+  const config = typeConfig[change.type as keyof typeof typeConfig];
   const TypeIcon = config.icon;
 
   return (
